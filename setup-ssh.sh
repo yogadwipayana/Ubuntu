@@ -3,6 +3,7 @@
 # Script ini menjalankan setup awal untuk menambahkan ssh dan menonaktifkan login root via ssh
 # komentar bila ada bagian yang tidak diperlukan
 
+#PUBLIC KEY="ssh-ed25519 C3NzaC1lZDI1NTE5...." 
 PUBLIC_KEY="ISI_PUBLIC_KEY_INI"
 
 echo "Membuat folder ssh..."

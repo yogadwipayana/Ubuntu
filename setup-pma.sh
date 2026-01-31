@@ -1,30 +1,14 @@
-# /data/bin/setup-pma.sh
+# /docker/pma/setup-pma.sh
 # chmod +x setup-pma.sh
 # sudo setup-pma.sh
 
 # Script ini menjalan setup awal untuk phpMyAdmin dan mysql dengan docker
 # komentar bila ada bagian yang tidak diperlukan
 
-MYSQL_ROOT_PASSWORD="GantiPasswordIni"
+MYSQL_ROOT_PASSWORD="Password0"
 PORT="8080"
 
-echo "Menginstal docker..."
-# Add Docker's official GPG key:
 sudo apt update && sudo apt upgrade -y
-sudo apt install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-Types: deb
-URIs: https://download.docker.com/linux/ubuntu
-Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
-Components: stable
-Signed-By: /etc/apt/keyrings/docker.asc
-EOF
-sudo apt update
 
 echo "Menyiapkan folder untuk data dan config pma..."
 sudo mkdir -p /docker/pma
@@ -86,7 +70,7 @@ EOF
 
 echo "Menjalankan docker-compose untuk pma dan mysql..."
 cd /docker/pma
-sudo docker-compose up -d
+sudo docker compose up -d
 
 echo "Password root PMA dan MySQL adalah: ${MYSQL_ROOT_PASSWORD}"
 echo "Setup phpMyAdmin dan MySQL selesai. Akses phpMyAdmin di http://<server-ip>:${PORT}"
