@@ -30,6 +30,7 @@ echo "Restart SSH..."
 systemctl restart ssh
 
 echo "Setup Firewall UFW..."
+apt install ufw -y
 ufw allow OpenSSH
 ufw --force enable
 
