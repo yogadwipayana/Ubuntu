@@ -1,3 +1,20 @@
+echo "Update motd"
+sudo rm /etc/motd
+sudo tee /etc/motd <<EOF
+# BEGIN ANSIBLE MANAGED BLOCK
+
+██████╗  ██████╗  ██████╗██╗  ██╗██████╗ ██╗      ██████╗ ██╗   ██╗
+██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝██╔══██╗██║     ██╔═══██╗╚██╗ ██╔╝
+██║  ██║██║   ██║██║     █████╔╝ ██████╔╝██║     ██║   ██║ ╚████╔╝
+██║  ██║██║   ██║██║     ██╔═██╗ ██╔═══╝ ██║     ██║   ██║  ╚██╔╝
+██████╔╝╚██████╔╝╚██████╗██║  ██╗██║     ███████╗╚██████╔╝   ██║
+╚═════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝╚═╝     ╚══════╝ ╚═════╝    ╚═╝
+
+Dockploy (https://dockploy.online) platform image
+courtesy of Dockploy Automatic Image Pipeline.
+# END ANSIBLE MANAGED BLOCK
+EOF
+
 echo "Menginstal docker..."
 # Add Docker's official GPG key:
 sudo apt update && sudo apt upgrade -y
